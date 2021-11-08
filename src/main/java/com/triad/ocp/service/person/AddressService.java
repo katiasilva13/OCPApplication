@@ -12,9 +12,10 @@ import java.util.List;
 
 @Service
 public class AddressService implements Serializable {
-    @Autowired
-    private AddressRepository repository;
 
+    private final AddressRepository repository;
+
+    @Autowired
     public AddressService(AddressRepository repository) {
         this.repository = repository;
     }

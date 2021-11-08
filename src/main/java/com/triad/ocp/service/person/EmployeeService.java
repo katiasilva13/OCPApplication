@@ -4,7 +4,6 @@ import com.triad.ocp.domain.person.Address;
 import com.triad.ocp.domain.person.Employee;
 import com.triad.ocp.domain.person.dto.EmployeeDTO;
 import com.triad.ocp.enumerator.Role;
-import com.triad.ocp.enumerator.Uf;
 import com.triad.ocp.repository.person.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -16,12 +15,15 @@ import java.util.List;
 @Service
 public class EmployeeService implements Serializable {
 
-    @Autowired
-    private EmployeeRepository repository;
+    private final EmployeeRepository repository;
+    private final AddressService addressService;
 
-    public EmployeeService(EmployeeRepository repository) {
+    @Autowired
+    public EmployeeService(EmployeeRepository repository, AddressService addressService) {
         this.repository = repository;
+        this.addressService = addressService;
     }
+
 
     public List<Employee> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
@@ -37,14 +39,13 @@ public class EmployeeService implements Serializable {
     }
 
     public Employee create(EmployeeDTO dto) {
-        Address address = Address.builder()
-                .cep(dto.getCep())
-                .city(dto.getCity())
-                .neighborhood(dto.getNeighborhood())
-                .number(dto.getNumber())
-                .street(dto.getStreet())
-                .uf(Uf.valueOf(dto.getUf()))
-                .build();
+        Address address =  this.addressService.create(
+                dto.getCep(),
+                dto.getCity(),
+                dto.getNeighborhood(),
+                dto.getNumber(),
+                dto.getStreet(),
+                dto.getUf());
         Employee person = Employee.builder()
                 .cpf(dto.getCpf())
                 .role(Role.valueOf(dto.getRole()))

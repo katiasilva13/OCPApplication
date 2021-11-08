@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class PersonService implements Serializable {
 
-    @Autowired
-    private PersonRepository repository;
+    private final PersonRepository repository;
 
+    @Autowired
     public PersonService(PersonRepository repository) {
         this.repository = repository;
     }
