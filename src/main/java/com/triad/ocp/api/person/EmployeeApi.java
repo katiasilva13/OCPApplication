@@ -2,7 +2,6 @@ package com.triad.ocp.api.person;
 
 import com.triad.ocp.domain.person.dto.EmployeeDTO;
 import com.triad.ocp.service.person.EmployeeService;
-import com.triad.ocp.service.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +12,10 @@ public class EmployeeApi {
 
     @Autowired
     private EmployeeService service;
+
+    public EmployeeApi(EmployeeService service) {
+        this.service = service;
+    }
 
     @GetMapping("/funcionarios")
     public ResponseEntity getAll() {

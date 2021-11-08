@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Client extends Person {
-    @Column(name = "name")
+    @Column(name = "cpf")
     private String cpf;
 
     @Column(name = "rg")

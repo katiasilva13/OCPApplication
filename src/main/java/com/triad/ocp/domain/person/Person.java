@@ -1,7 +1,6 @@
 package com.triad.ocp.domain.person;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.triad.ocp.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,13 @@ import javax.persistence.*;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Person extends AbstractEntity {
+public class Person  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Integer id;
+
     @Column(name = "name")
     private String name;
 
@@ -24,7 +29,7 @@ public class Person extends AbstractEntity {
     private String phoneNumber;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = true)
     private Address address;
 }
 

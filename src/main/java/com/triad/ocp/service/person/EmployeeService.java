@@ -2,7 +2,6 @@ package com.triad.ocp.service.person;
 
 import com.triad.ocp.domain.person.Address;
 import com.triad.ocp.domain.person.Employee;
-import com.triad.ocp.domain.person.Person;
 import com.triad.ocp.domain.person.dto.EmployeeDTO;
 import com.triad.ocp.enumerator.Role;
 import com.triad.ocp.enumerator.Uf;
@@ -19,6 +18,10 @@ public class EmployeeService implements Serializable {
 
     @Autowired
     private EmployeeRepository repository;
+
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Employee> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));

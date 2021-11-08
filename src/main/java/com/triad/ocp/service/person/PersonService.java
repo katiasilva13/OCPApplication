@@ -15,6 +15,10 @@ public class PersonService implements Serializable {
     @Autowired
     private PersonRepository repository;
 
+    public PersonService(PersonRepository repository) {
+        this.repository = repository;
+    }
+
     public List<Person> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
     }

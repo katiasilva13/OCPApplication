@@ -22,6 +22,9 @@ public class ClientService implements Serializable {
     @Autowired
     private ClientRepository repository;
 
+    @Autowired
+    private AddressService addressService;
+
     public List<Client> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
     }
@@ -35,14 +38,13 @@ public class ClientService implements Serializable {
     }
 
     public Client create(ClientDTO dto) {
-        Address address = Address.builder()
-                .cep(dto.getCep())
-                .city(dto.getCity())
-                .neighborhood(dto.getNeighborhood())
-                .number(dto.getNumber())
-                .street(dto.getStreet())
-                .uf(Uf.valueOf(dto.getUf()))
-                .build();
+        Address address =  addressService.create(
+                dto.getCep(),
+                dto.getCity(),
+                dto.getNeighborhood(),
+                dto.getNumber(),
+                dto.getStreet(),
+                dto.getUf());
         Client person = Client.builder()
                 .cpf(dto.getCpf())
                 .rg(dto.getRg())

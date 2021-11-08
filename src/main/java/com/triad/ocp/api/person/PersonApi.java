@@ -12,6 +12,10 @@ public class PersonApi {
     @Autowired
     private PersonService service;
 
+    public PersonApi(PersonService service) {
+        this.service = service;
+    }
+
     @GetMapping("/usuarios")
     public ResponseEntity getAll() {
         return ResponseEntity.ok(this.service.getAll());

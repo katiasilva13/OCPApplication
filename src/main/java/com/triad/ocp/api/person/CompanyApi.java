@@ -1,8 +1,6 @@
 package com.triad.ocp.api.person;
 
-import com.triad.ocp.domain.person.dto.ClientDTO;
 import com.triad.ocp.domain.person.dto.CompanyDTO;
-import com.triad.ocp.service.person.ClientService;
 import com.triad.ocp.service.person.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +12,10 @@ public class CompanyApi {
 
     @Autowired
     private CompanyService service;
+
+    public CompanyApi(CompanyService service) {
+        this.service = service;
+    }
 
     @GetMapping("/empresa/{id}")
     public ResponseEntity getById(@PathVariable Integer id) {

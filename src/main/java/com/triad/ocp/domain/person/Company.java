@@ -21,6 +21,6 @@ public class Company extends Person{
     @Column(name = "corporate_name")
     private String corporateName;
 
-    @Column(name = "name")
+    @Column(name = "cnpj")
     private String cnpj;
 }

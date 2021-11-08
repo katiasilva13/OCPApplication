@@ -1,14 +1,10 @@
 package com.triad.ocp.domain.person;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.triad.ocp.domain.AbstractEntity;
 import com.triad.ocp.enumerator.Uf;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,7 +13,14 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-public class Address extends AbstractEntity {
+@Table
+public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Integer id;
+
     @Column(name = "street")
     private String street;
 

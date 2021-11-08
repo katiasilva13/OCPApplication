@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Employee extends Person {
-    @Column(name = "name")
+    @Column(name = "cpf")
     private String cpf;
 
     @Column

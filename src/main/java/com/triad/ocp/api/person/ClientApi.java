@@ -13,6 +13,10 @@ public class ClientApi {
     @Autowired
     private ClientService service;
 
+    public ClientApi(ClientService service) {
+        this.service = service;
+    }
+
     @GetMapping("/clientes")
     public ResponseEntity getAll() {
         return ResponseEntity.ok(this.service.getAll());
