@@ -1,36 +1,36 @@
 package com.triad.ocp.api.person;
 
-import com.triad.ocp.domain.person.dto.EmployeeDTO;
-import com.triad.ocp.service.person.EmployeeService;
-import com.triad.ocp.service.person.PersonService;
+import com.triad.ocp.domain.person.dto.ClientDTO;
+import com.triad.ocp.service.person.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-public class EmployeeApi {
+public class ClientApi {
 
     @Autowired
-    private EmployeeService service;
+    private ClientService service;
 
-    @GetMapping("/usuarios")
+    @GetMapping("/clientes")
     public ResponseEntity getAll() {
         return ResponseEntity.ok(this.service.getAll());
     }
 
-    @GetMapping("/usuarios/{id}")
+    @GetMapping("/clientes/{id}")
     public ResponseEntity getById(@PathVariable Integer id) {
         return ResponseEntity.ok(this.service.getById(id));
     }
 
-    @DeleteMapping("/usuarios/{id}")
+    @DeleteMapping("/clientes/{id}")
     public ResponseEntity deleteById(@PathVariable Integer id) {
-        return ResponseEntity.ok(this.service.deleteById(id));
+        this.service.deleteById(id);
+        return ResponseEntity.ok("Cliente excluido");
     }
 
-    @PostMapping("/usuarios")
-    public ResponseEntity create(@RequestBody EmployeeDTO dto) {
+    @PostMapping("/clientes")
+    public ResponseEntity create(@RequestBody ClientDTO dto) {
         return ResponseEntity.ok(this.service.create(dto));
     }
 }

@@ -1,6 +1,7 @@
-package com.triad.ocp.domain;
+package com.triad.ocp.domain.person;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.triad.ocp.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-//@MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor

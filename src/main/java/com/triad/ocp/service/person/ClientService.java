@@ -1,11 +1,13 @@
 package com.triad.ocp.service.person;
 
 import com.triad.ocp.domain.person.Address;
+import com.triad.ocp.domain.person.Client;
 import com.triad.ocp.domain.person.Employee;
-import com.triad.ocp.domain.person.Person;
+import com.triad.ocp.domain.person.dto.ClientDTO;
 import com.triad.ocp.domain.person.dto.EmployeeDTO;
 import com.triad.ocp.enumerator.Role;
 import com.triad.ocp.enumerator.Uf;
+import com.triad.ocp.repository.person.ClientRepository;
 import com.triad.ocp.repository.person.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,25 +17,24 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-public class EmployeeService implements Serializable {
+public class ClientService implements Serializable {
 
     @Autowired
-    private EmployeeRepository repository;
+    private ClientRepository repository;
 
-    public List<Employee> getAll() {
+    public List<Client> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
     }
 
-    public Employee getById(Integer id) {
+    public Client getById(Integer id) {
         return this.repository.findById(id).get();
     }
 
-    public List<Employee> deleteById(Integer id) {
+    public void deleteById(Integer id) {
         this.repository.deleteById(id);
-        return getAll();
     }
 
-    public Employee create(EmployeeDTO dto) {
+    public Client create(ClientDTO dto) {
         Address address = Address.builder()
                 .cep(dto.getCep())
                 .city(dto.getCity())
@@ -42,14 +43,13 @@ public class EmployeeService implements Serializable {
                 .street(dto.getStreet())
                 .uf(Uf.valueOf(dto.getUf()))
                 .build();
-        Employee person = Employee.builder()
+        Client person = Client.builder()
                 .cpf(dto.getCpf())
-                .role(Role.valueOf(dto.getRole()))
+                .rg(dto.getRg())
                 .build();
         person.setAddress(address);
         person.setName(dto.getName());
         person.setPhoneNumber(dto.getPhoneNumber());
-        this.repository.save(person);
-        return person;
+        return this.repository.save(person);
     }
 }

@@ -1,35 +1,27 @@
 package com.triad.ocp.api.person;
 
 import com.triad.ocp.domain.person.dto.ClientDTO;
+import com.triad.ocp.domain.person.dto.CompanyDTO;
 import com.triad.ocp.service.person.ClientService;
+import com.triad.ocp.service.person.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-public class ClientApi {
+public class CompanyApi {
 
     @Autowired
-    private ClientService service;
+    private CompanyService service;
 
-    @GetMapping("/clientes")
-    public ResponseEntity getAll() {
-        return ResponseEntity.ok(this.service.getAll());
-    }
-
-    @GetMapping("/clientes/{id}")
+    @GetMapping("/empresa/{id}")
     public ResponseEntity getById(@PathVariable Integer id) {
         return ResponseEntity.ok(this.service.getById(id));
     }
 
-    @DeleteMapping("/clientes/{id}")
-    public ResponseEntity deleteById(@PathVariable Integer id) {
-        return ResponseEntity.ok(this.service.deleteById(id));
-    }
-
-    @PostMapping("/clientes")
-    public ResponseEntity create(@RequestBody ClientDTO dto) {
+    @PostMapping("/empresa")
+    public ResponseEntity create(@RequestBody CompanyDTO dto) {
         return ResponseEntity.ok(this.service.create(dto));
     }
 }

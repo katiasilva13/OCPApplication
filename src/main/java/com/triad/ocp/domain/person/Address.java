@@ -1,6 +1,7 @@
-package com.triad.ocp.domain;
+package com.triad.ocp.domain.person;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.triad.ocp.domain.AbstractEntity;
 import com.triad.ocp.enumerator.Uf;
 import lombok.*;
 

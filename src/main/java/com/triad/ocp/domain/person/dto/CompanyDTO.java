@@ -1,6 +1,11 @@
 package com.triad.ocp.domain.person.dto;
 
-public class ClientDTO {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class CompanyDTO {
     private String name;
     private String phoneNumber;
     private String street;
@@ -10,6 +15,6 @@ public class ClientDTO {
     private String cep;
     private String uf;
 
-    private String cpf;
-    private String rg;
+    private String corporateName;
+    private String cnpj;
 }

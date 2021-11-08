@@ -1,26 +1,26 @@
 package com.triad.ocp.domain.person;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.triad.ocp.enumerator.Role;
+import com.triad.ocp.enumerator.Uf;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@PrimaryKeyJoinColumn(name = "client_id")
+@PrimaryKeyJoinColumn(name = "employee_id")
 @Entity
 @Table
-public class Client extends Person {
+public class Employee extends Person {
     @Column(name = "name")
     private String cpf;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
