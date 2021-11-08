@@ -1,0 +1,23 @@
+GET http://localhost:8080/usuarios HTTP/1.1
+
+###
+
+GET http://localhost:8080/clientes HTTP/1.1
+
+###
+
+POST http://localhost:8080/clientes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Aparato Futurista",
+    "phoneNumber": "44944444444",
+    "street": "Rua. ABC",
+    "number": "201",
+    "neighborhood": "Centro",
+    "city": "Maringá",
+    "cep": "87101000",
+    "uf": "PR",
+    "cpf": "01234567890",
+    "rg": ""
+}
