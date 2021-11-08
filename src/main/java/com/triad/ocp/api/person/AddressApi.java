@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 public class AddressApi {
-    @Autowired
-    private AddressService service;
 
+    private final AddressService service;
+
+    @Autowired
     public AddressApi(AddressService service) {
         this.service = service;
     }

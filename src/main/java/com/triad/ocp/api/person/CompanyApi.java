@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class CompanyApi {
 
-    @Autowired
-    private CompanyService service;
+    private final CompanyService service;
 
+    @Autowired
     public CompanyApi(CompanyService service) {
         this.service = service;
     }

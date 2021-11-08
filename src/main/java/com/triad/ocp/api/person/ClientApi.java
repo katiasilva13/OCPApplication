@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ClientApi {
 
-    @Autowired
-    private ClientService service;
+    private final ClientService service;
 
+    @Autowired
     public ClientApi(ClientService service) {
         this.service = service;
     }
