@@ -1,0 +1,77 @@
+GET http://localhost:8080/usuarios HTTP/1.1
+
+###
+
+GET http://localhost:8080/clientes HTTP/1.1
+
+###
+
+POST http://localhost:8080/clientes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Aparato Futurista",
+    "phoneNumber": "44944444444",
+    "street": "Rua. ABC",
+    "number": "201",
+    "neighborhood": "Centro",
+    "city": "Maringá",
+    "cep": "87101000",
+    "uf": "PR",
+    "cpf": "01234567890",
+    "rg": ""
+}
+
+###
+
+POST http://localhost:8080/clientes HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Aparato Imediatista",
+    "phoneNumber": "44944444444",
+    "street": "Rua BCD",
+    "number": "404",
+    "neighborhood": "Centro",
+    "city": "Maringá",
+    "cep": "87101000",
+    "uf": "PR",
+    "cpf": "01234567890",
+    "rg": ""
+}
+
+###
+
+POST http://localhost:8080/funcionarios HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Aparato Passadista",
+    "phoneNumber": "44944444444",
+    "street": "Rua CDE",
+    "number": "500",
+    "neighborhood": "Centro",
+    "city": "Maringá",
+    "cep": "87101000",
+    "uf": "PR",
+    "cpf": "01234567890",
+    "role": "GERENTE"
+}
+
+###
+
+POST http://localhost:8080/empresa HTTP/1.1
+content-type: application/json
+
+{
+    "name": "OCP Moda",
+    "phoneNumber": "44944444444",
+    "street": "Av. Herval",
+    "number": "349",
+    "neighborhood": "Centro",
+    "city": "Maringá",
+    "cep": "87101000",
+    "uf": "PR",
+    "cnpj": "52746137000193",
+    "corporateName": "Olivia Cortez Peres Moda Ltda"
+}
