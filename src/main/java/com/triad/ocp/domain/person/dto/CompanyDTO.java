@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class CompanyDTO {
+    private Integer id;
     private String name;
     private String phoneNumber;
     private String street;
@@ -14,7 +15,6 @@ public class CompanyDTO {
     private String city;
     private String cep;
     private String uf;
-
     private String corporateName;
     private String cnpj;
 }

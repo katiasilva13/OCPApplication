@@ -6,6 +6,7 @@ import com.triad.ocp.domain.person.dto.CompanyDTO;
 import com.triad.ocp.repository.person.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 
@@ -25,6 +26,7 @@ public class CompanyService implements Serializable {
         return this.repository.findById(id).get();
     }
 
+    @Transactional
     public Company create(CompanyDTO dto) {
         Address address =  this.addressService.create(
                 dto.getCep(),
