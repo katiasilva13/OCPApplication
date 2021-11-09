@@ -5,6 +5,7 @@ import com.triad.ocp.repository.person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,6 +28,7 @@ public class PersonService implements Serializable {
         return this.repository.findById(id).get();
     }
 
+    @Transactional
     public List<Person> deleteById(Integer id) {
         this.repository.deleteById(id);
         return getAll();
