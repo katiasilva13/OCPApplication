@@ -8,6 +8,7 @@ import com.triad.ocp.repository.person.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +25,6 @@ public class EmployeeService implements Serializable {
         this.addressService = addressService;
     }
 
-
     public List<Employee> getAll() {
         return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
     }
@@ -33,11 +33,13 @@ public class EmployeeService implements Serializable {
         return this.repository.findById(id).get();
     }
 
+    @Transactional
     public List<Employee> deleteById(Integer id) {
         this.repository.deleteById(id);
         return getAll();
     }
 
+    @Transactional
     public Employee create(EmployeeDTO dto) {
         Address address =  this.addressService.create(
                 dto.getCep(),

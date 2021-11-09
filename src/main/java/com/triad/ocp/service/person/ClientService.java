@@ -7,6 +7,7 @@ import com.triad.ocp.repository.person.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,10 +32,12 @@ public class ClientService implements Serializable {
         return this.repository.findById(id).get();
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.repository.deleteById(id);
     }
 
+    @Transactional
     public Client create(ClientDTO dto) {
         Address address =  this.addressService.create(
                 dto.getCep(),

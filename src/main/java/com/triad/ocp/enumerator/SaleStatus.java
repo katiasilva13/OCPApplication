@@ -1,2 +1,7 @@
-package com.triad.ocp.enumerator;public enum SaleStatus {
+package com.triad.ocp.enumerator;
+
+public enum SaleStatus {
+    ABERTA,
+    CANCELADA,
+    FINALIZADA;
 }

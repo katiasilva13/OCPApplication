@@ -1,0 +1,26 @@
+GET http://localhost:8080/vendas HTTP/1.1
+
+###
+POST http://localhost:8080/clientes HTTP/1.1
+content-type: application/json
+
+{
+  "moment": "2021-10-18T14:00:00Z",
+  "discount": 0,
+  "saleItems": [
+    {
+      "count": 1,
+      "value": 8,
+      "productId": 1
+    },
+            {
+      "count": 3,
+      "saleValue": 5.99,
+      "productId": 2
+    }
+  ],
+  "subTotal": 50,
+  "total": 50, 
+  "employeeId": 3,
+  "clientId": 1
+}
