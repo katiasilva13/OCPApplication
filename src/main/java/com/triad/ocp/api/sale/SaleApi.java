@@ -1,5 +1,6 @@
 package com.triad.ocp.api.sale;
 
+import com.triad.ocp.domain.sale.dto.SaleDTO;
 import com.triad.ocp.service.sale.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
