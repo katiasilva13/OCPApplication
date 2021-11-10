@@ -3,8 +3,10 @@ package com.triad.ocp.service.sale;
 import com.triad.ocp.domain.product.Product;
 import com.triad.ocp.domain.sale.Sale;
 import com.triad.ocp.domain.sale.SaleItem;
+import com.triad.ocp.domain.sale.dto.SaleItemDTO;
 import com.triad.ocp.repository.sale.SaleItemRepository;
 import com.triad.ocp.service.product.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +16,13 @@ import java.util.List;
 @Service
 public class SaleItemService implements Serializable {
 
-    public final SaleItem saleItem;
-    public final Sale sale;
     public final ProductService productService;
-    private final Product product;
     private SaleItemRepository repository;
 
-    public SaleItemService(SaleItem saleItem, Sale sale, ProductService productService, Product product) {
-        this.saleItem = saleItem;
-        this.sale = sale;
+    @Autowired
+    public SaleItemService(ProductService productService, SaleItemRepository repository) {
         this.productService = productService;
-        this.product = product;
+        this.repository = repository;
     }
 
     public List<SaleItem> getAll() {
@@ -35,9 +33,8 @@ public class SaleItemService implements Serializable {
         return this.repository.findById(id).get();
     }
 
-    public void createAll(List<SaleItem> saleItems, Sale sale) {
-
-        for(SaleItem item : saleItems){
+    public void createAll(List<SaleItemDTO> saleItems, Sale sale) {
+        for(SaleItemDTO item : saleItems){
             Product p = this.productService.getById(item.getId());
             SaleItem saleItem = SaleItem.builder()
                     .count(item.getCount())
