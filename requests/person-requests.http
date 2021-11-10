@@ -6,6 +6,13 @@ GET http://localhost:8080/clientes HTTP/1.1
 
 ###
 
+GET http://localhost:8080/funcionarios HTTP/1.1
+
+###
+
+GET http://localhost:8080/empresa HTTP/1.1
+
+###
 POST http://localhost:8080/clientes HTTP/1.1
 content-type: application/json
 

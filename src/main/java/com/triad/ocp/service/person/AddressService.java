@@ -6,6 +6,7 @@ import com.triad.ocp.repository.person.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,7 +29,7 @@ public class AddressService implements Serializable {
         return this.repository.findById(id).get();
     }
 
-
+    @Transactional
     public Address create(String cep, String city, String neighborhood, String number, String street, String uf) {
         Address address = Address.builder()
                 .cep(cep)
