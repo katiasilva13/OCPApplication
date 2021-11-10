@@ -35,7 +35,7 @@ public class SaleItemService implements Serializable {
 
     public void createAll(List<SaleItemDTO> saleItems, Sale sale) {
         for(SaleItemDTO item : saleItems){
-            Product p = this.productService.getById(item.getId());
+            Product p = this.productService.getById(item.getProductId());
             SaleItem saleItem = SaleItem.builder()
                     .count(item.getCount())
                     .value(item.getValue())

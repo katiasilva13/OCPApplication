@@ -35,13 +35,12 @@ public class SaleService implements Serializable {
     }
 
     public List<Sale> getAll() {
-        return this.repository.findAll(Sort.by(Sort.Order.asc("name")));
+        return this.repository.findAll();
     }
 
     public Sale getById(Integer id) {
         return this.repository.findById(id).get();
     }
-    
 
     @Transactional
     public Object create(SaleDTO dto) {

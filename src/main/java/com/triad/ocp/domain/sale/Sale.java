@@ -3,7 +3,6 @@ package com.triad.ocp.domain.sale;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.triad.ocp.domain.person.Client;
 import com.triad.ocp.domain.person.Employee;
-import com.triad.ocp.enumerator.Role;
 import com.triad.ocp.enumerator.SaleStatus;
 import lombok.*;
 
@@ -19,7 +18,6 @@ import lombok.Builder;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table
-@Builder
 public class Sale {
 
     @Id
