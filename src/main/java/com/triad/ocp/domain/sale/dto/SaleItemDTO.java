@@ -10,5 +10,5 @@ public class SaleItemDTO {
     private Double count;
     private Double value;
     private Integer saleId;
-//    private Integer productId;
+    private Integer productId;
 }

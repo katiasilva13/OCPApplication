@@ -27,10 +27,10 @@ public class SaleApi {
         return ResponseEntity.ok(this.service.getById(id));
     }
 
-//    @PostMapping("/vendas")
-//    public ResponseEntity create(@RequestBody SaleDTO dto) {
-//        return ResponseEntity.ok(this.service.create(dto));
-//    }
+      @PostMapping("/vendas")
+      public ResponseEntity create(@RequestBody SaleDTO dto) {
+        return ResponseEntity.ok(this.service.create(dto));
+      }
 //
 //    @PostMapping("/vendas/cancelar/{id}")
 //    public ResponseEntity cancel(@PathVariable Integer id) {

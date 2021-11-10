@@ -3,12 +3,8 @@ package com.triad.ocp.domain.sale;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.triad.ocp.domain.person.Client;
 import com.triad.ocp.domain.person.Employee;
-import com.triad.ocp.enumerator.Role;
 import com.triad.ocp.enumerator.SaleStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

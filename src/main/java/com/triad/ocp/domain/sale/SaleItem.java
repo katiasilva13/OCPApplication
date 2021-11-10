@@ -2,10 +2,7 @@ package com.triad.ocp.domain.sale;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.triad.ocp.domain.product.Product;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table
+@Builder
 public class SaleItem {
 
     @Id
