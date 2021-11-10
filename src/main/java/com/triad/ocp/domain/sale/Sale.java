@@ -5,10 +5,7 @@ import com.triad.ocp.domain.person.Client;
 import com.triad.ocp.domain.person.Employee;
 import com.triad.ocp.enumerator.Role;
 import com.triad.ocp.enumerator.SaleStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,6 +17,7 @@ import java.time.LocalDateTime;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table
+@Builder
 public class Sale {
 
     @Id

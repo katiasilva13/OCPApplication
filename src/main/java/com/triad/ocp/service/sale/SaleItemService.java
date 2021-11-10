@@ -1,27 +1,27 @@
 package com.triad.ocp.service.sale;
 
-import antlr.ASTNULLType;
 import com.triad.ocp.domain.product.Product;
 import com.triad.ocp.domain.sale.Sale;
 import com.triad.ocp.domain.sale.SaleItem;
-import com.triad.ocp.domain.sale.dto.SaleItemDTO;
 import com.triad.ocp.repository.sale.SaleItemRepository;
 import com.triad.ocp.service.product.ProductService;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class SalemItemService implements Serializable {
+@Service
+public class SaleItemService implements Serializable {
 
-    public final SaleItemDTO saleItemDTO;
+    public final SaleItem saleItem;
     public final Sale sale;
     public final ProductService productService;
     private final Product product;
     private SaleItemRepository repository;
 
-    public SalemItemService(SaleItemDTO saleItemDTO, Sale sale, ProductService productService, Product product) {
-        this.saleItemDTO = saleItemDTO;
+    public SaleItemService(SaleItem saleItem, Sale sale, ProductService productService, Product product) {
+        this.saleItem = saleItem;
         this.sale = sale;
         this.productService = productService;
         this.product = product;
@@ -35,16 +35,17 @@ public class SalemItemService implements Serializable {
         return this.repository.findById(id).get();
     }
 
+    public void createAll(List<SaleItem> saleItems, Sale sale) {
 
-
-
-   /* public void createAll(SaleItemDTO dto, Sale sale){
-
-        dto.
-        Product p = this.productService.getById(dto.getId());
-        SaleItem saleItem =
-        SaleItem.builder().*/
-
-
+        for(SaleItem item : saleItems){
+            Product p = this.productService.getById(item.getId());
+            SaleItem saleItem = SaleItem.builder()
+                    .count(item.getCount())
+                    .value(item.getValue())
+                    .sale(sale)
+                    .build();
+            this.repository.save(saleItem);
+        }
+    }
 
 }
