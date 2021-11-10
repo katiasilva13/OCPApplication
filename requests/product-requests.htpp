@@ -1,0 +1,9 @@
+POST http://localhost:8082/produtos HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Televisão",
+    "quantity": "1",
+    "priceBuy": 3000,
+    "priceSale": 2500
+}

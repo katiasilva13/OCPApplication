@@ -3,7 +3,6 @@ package com.triad.ocp.service.sale;
 import com.triad.ocp.service.person.ClientService;
 import com.triad.ocp.service.person.EmployeeService;
 import com.triad.ocp.domain.sale.Sale;
-
 import com.triad.ocp.domain.sale.dto.SaleDTO;
 import com.triad.ocp.repository.sale.SaleRepository;
 import com.triad.ocp.service.product.ProductService;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,6 +41,7 @@ public class SaleService implements Serializable {
     public Sale getById(Integer id) {
         return this.repository.findById(id).get();
     }
+    
 
     @Transactional
     public Object create(SaleDTO dto) {
